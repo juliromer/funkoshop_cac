@@ -31,7 +31,7 @@ button {
   display: flex;
   flex-direction: column;
   gap: 45px;
-  width: 1220px;
+  width: 1180px;
   margin: 0 auto;
   padding: 30px 10px;
 }
@@ -476,7 +476,7 @@ iconify-icon {
 /** FILTER FORM **/
 
 .dropdown {
-  width: 30%;
+  width: 600px;
 }
 
 .dropbtn {
@@ -496,7 +496,7 @@ iconify-icon {
 
 .shopForm__input,
 .shopForm__select {
-  width: 80%;
+  width: 90%;
   margin-top: 7px;
   height: 27px;
   border-radius: 5px;
@@ -803,7 +803,7 @@ iconify-icon {
 }
 
 
-/* Style temporal de carrito.html */
+/* CARRITO */
 
 .carrito-titulo, .carrito-resumen-titulo {
   font-family: 'Raleway', sans-serif;
@@ -811,21 +811,17 @@ iconify-icon {
   font-size: 46px;
   font-weight: 700;
   display: inline-block;
-  border-bottom: solid 5px #F24E1E;
-}
-
-.carrito-titulo {
-  margin: 128px 0px 44px 110px;
+  text-decoration: underline solid 5px #F24E1E;
+  text-underline-offset: 10px;
 }
 
 .carrito-resumen {
   display: flex;
   justify-content: flex-end;
-  margin: 52px 110px 0px 0px;
 }
 
 .carrito-tabla {
-  width: 1220px;
+  width: 100%;
   margin: auto;
 }
 
@@ -833,7 +829,7 @@ iconify-icon {
   background: #FAFAFF;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.25);
   padding: 16px;
-  margin: 16px 0px 16px 0px;
+  margin: 16px 0px;
 }
 
 .carrito-tabla-item {
@@ -1287,6 +1283,23 @@ iconify-icon {
   .answer p {
     font-size: 16px;
   }
+
+  /* CARRITO */
+
+  .carrito-tabla-item {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .carrito-item {
+    width: 75vw;
+    justify-content: center;
+  }
+
+  .carrito-tabla-encabezado {
+    display: none;
+  }
 }
 
 
@@ -1306,6 +1319,12 @@ iconify-icon {
 
   .footer__container img {
     margin-top: 20px;
+  }
+
+  /* CARRITO */
+
+  .carrito-tabla tr {
+    padding: 16px 8px;
   }
 }
 
@@ -1342,5 +1361,11 @@ iconify-icon {
 
   .card-item__cover img {
     width: 250px;
+  }
+
+  /* CARRITO */
+
+  .carrito-item-titulo {
+    font-size: 19px;
   }
 }
