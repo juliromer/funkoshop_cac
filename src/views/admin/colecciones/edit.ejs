@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colecciones</title>
+    <link rel="icon" href="/multimedia/branding/logoipsum-282.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/css/style.css?num=<%= Date.now() %>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <%- include('../../partials/headerAdmin') %>
+
+    <main class="container__forms">
+      <h1 class="uppercase">Editar colección</h1>
+      <% if (typeof errors != 'undefined') { %>
+      <ul>
+        <% errors.forEach(error => { %>
+        <li><%= error.msg %></li>
+        <% }) %>
+      </ul>
+      <% } %>
+
+      <form class="admin__form flex-column" action="/admin/colecciones/<%= values.id %>?_method=PUT" method="post" enctype="multipart/form-data" >
+        <div>
+          <label for="nombre">Nombre: </label>
+          <input class="admin__forms__input" type="text" id="nombre" name="nombre" value="<%= typeof values != 'undefined' ? values.nombre : '' %>" />
+        </div>
+
+        <div>
+          <label for="nombre">Descripción: </label>
+          <input class="admin__forms__input" type="text" id="descripcion" name="descripcion" value="<%= typeof values != 'undefined' ? values.descripcion : '' %>" />
+        </div>
+
+        <div>
+          <label for="imagen">Imagen: </label>
+          <input class="admin__forms__files" type="file" id="imagen" name="imagen" accept="image/*" />
+          <div>
+            <img width="100" src="/uploads/colecciones/coleccion_<%= values.id %>.webp" alt="<%= values.nombre %>" />
+          </div>
+        </div>
+
+        <button type="submit" class="primary__btn">Guardar</button>
+      </form>
+    </main>
+    
+    <%- include('../../partials/footerAdmin') %>
+  </body>
+</html>

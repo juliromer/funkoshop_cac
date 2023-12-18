@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FunkoShop</title>
+  <link rel="icon" href="/multimedia/branding/logoipsum-282.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/css/style.css?num=<%= Date.now() %>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@400;500;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <%- include('partials/header') %>
+
+    <main class="container__listas">
+      <h1 class="primary__title">Preguntas Frecuentes</h1>
+
+      <div class="faq">
+        <div class="question">
+          <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim, non?</h3>
+
+          <svg width="15" height="10" viewBox="0 0 42 25">
+            <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="answer">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque maiores nemo nulla. Rerum provident, ex, illo numquam nemo quas voluptate commodi nisi at consequuntur impedit dolorem perferendis corrupti eligendi odio!
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <div class="question">
+          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam hic placeat inventore?</h3>
+
+          <svg width="15" height="10" viewBox="0 0 42 25">
+            <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="answer">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae distinctio impedit illum laboriosam dolorum perspiciatis quia. Nesciunt aspernatur dolore ipsa temporibus ex, natus debitis odio totam cupiditate quas eligendi eius nulla unde amet eaque accusantium!
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <div class="question">
+          <h3>Lorem ipsum dolor sit amet consectetur adipisicing?</h3>
+
+          <svg width="15" height="10" viewBox="0 0 42 25">
+            <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="answer">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure vitae quidem optio fugit hic numquam.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <div class="question">
+          <h3>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim, non?</h3>
+
+          <svg width="15" height="10" viewBox="0 0 42 25">
+            <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="answer">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque maiores nemo nulla. Rerum provident, ex, illo numquam nemo quas voluptate commodi nisi at consequuntur impedit dolorem perferendis corrupti eligendi odio!
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <div class="question">
+          <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam hic placeat inventore?</h3>
+
+          <svg width="15" height="10" viewBox="0 0 42 25">
+            <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="answer">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae distinctio impedit illum laboriosam dolorum perspiciatis quia. Nesciunt aspernatur dolore ipsa temporibus ex, natus debitis odio totam cupiditate quas eligendi eius nulla unde amet eaque accusantium!
+          </p>
+        </div>
+      </div>
+
+      <div class="faq">
+        <div class="question">
+          <h3>Lorem ipsum dolor sit amet consectetur adipisicing?</h3>
+
+          <svg width="15" height="10" viewBox="0 0 42 25">
+            <path d="M3 3L21 21L39 3" stroke="white" stroke-width="7" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="answer">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure vitae quidem optio fugit hic numquam.
+          </p>
+        </div>
+      </div>
+
+
+
+    </main>
+
+    <%- include('partials/footer') %>
+
+      <script>
+        const faqs = document.querySelectorAll(".faq");
+
+        faqs.forEach(faq => {
+          faq.addEventListener("click", () => {
+            faq.classList.toggle("active");
+          })
+        })
+      </script>
+
+</body>
+
+</html>

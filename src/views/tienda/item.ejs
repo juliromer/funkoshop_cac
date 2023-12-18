@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop</title>
+  <link rel="icon" href="/multimedia/branding/logoipsum-282.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/css/style.css?num=<%= Date.now() %>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@400;500;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.core.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@glidejs/glide/dist/css/glide.theme.min.css">
+
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+    <main class="container">
+      <article class="item__container">
+        <div class="item__cover item__column">
+          <img class="item__img--front" width="500" src="/uploads/productos/producto_<%= productoMain.id %>.webp"
+            alt="<%= productoMain.nombre %>" />
+          <img class="item__img--box" width="500" src="/uploads/productos/producto_caja_<%= productoMain.id %>.webp"
+            alt="<%= productoMain.nombre %>" />
+        </div>
+
+        <div class="item__column">
+          <p class="item__collection">
+            <%= productoMain.Collection.nombre %>
+          </p>
+          <h2 class="item__title">
+            <%= productoMain.nombre %>
+          </h2>
+          <p class="item__description">
+            <%= productoMain.descripcion %>
+          </p>
+          <p class="item__price">$<%= productoMain.precio %>
+          </p>
+          <div class="flex-row align-center" style="gap: 10px;">
+            <input class="item__cart__input" type="number">
+            <div class="flex-column item__cart__buttons">
+              <button class="item__cart__button">+</button>
+              <button class="item__cart__button">-</button>
+            </div>
+            <button class="carrito__btn">Agregar al carrito</button>
+          </div>
+          <p class="item__promo"><a href="">Ver métodos de pago</a> - <span>
+              <%= productoMain.cuotas %>
+            </span></p>
+        </div>
+      </article>
+
+
+      <section class="slider glide">
+        <h3 class="slider__title">Productos relacionados</h3>
+        <div class="glide__track" data-glide-el="track">
+          <ul class="slider__items glide__slides">
+
+            <% productos.forEach(producto=> {
+              if(producto.Collection.nombre == productoMain.Collection.nombre && producto.nombre != productoMain.nombre)
+              {%>
+
+              <li class="slider__item glide__slide">
+                <article class="card-item">
+                  <a class="card-item__link" href="/tienda/item/<%= producto.id %>">
+                    <div class="card-item__cover">
+                      <% if (producto.id> productos.length - 6) { %>
+                        <span class="card-item__tag">Nuevo</span>
+                        <% } else { %>
+                          <span></span>
+                          <% } %>
+                            <img class="card-item__img--front" width="300"
+                              src="/uploads/productos/producto_<%= producto.id %>.webp" alt="<%= producto.nombre %>" />
+                            <img class="card-item__img--box" width="300"
+                              src="/uploads/productos/producto_caja_<%= producto.id %>.webp"
+                              alt="<%= producto.nombre %>" />
+                    </div>
+                    <div class="card-item__content">
+                      <p class="card-item__collection">
+                        <%= producto.Collection.nombre %>
+                      </p>
+                      <h3 class="card-item__name">
+                        <%= producto.nombre %>
+                      </h3>
+                      <p class="card-item__price">$<%= producto.precio %>
+                      </p>
+                      <p class="card-item__promo">
+                        <%= producto.cuotas %>
+                      </p>
+                    </div>
+
+                  </a>
+                </article>
+              </li>
+              <% } })%>
+
+          </ul>
+        </div>
+
+        <div class="glide__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><iconify-icon
+              icon="tabler:chevron-left"></iconify-icon></button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><iconify-icon
+              icon="tabler:chevron-right"></iconify-icon></button>
+        </div>
+
+      </section>
+
+    </main>
+    <%- include('../partials/footer') %>
+
+      <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+      <script>
+        new Glide('.glide', {
+          type: 'carousel',
+          startAt: 0,
+          //gap: 30,
+          perView: 3,
+          breakpoints: {
+            700: {
+              perView: 1
+            },
+            1024: {
+              perView: 2
+            },
+            1200: {
+              perView: 3
+            }
+          }
+        }).mount()
+      </script>
+</body>
+
+</html>

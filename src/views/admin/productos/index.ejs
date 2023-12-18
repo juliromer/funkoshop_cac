@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Productos</title>
+    <link rel="icon" href="/multimedia/branding/logoipsum-282.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/css/style.css?num=<%= Date.now() %>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <%- include('../../partials/headerAdmin') %>
+
+    <main class="container__listas">
+      <div class="flex-row align-center">
+        <img src="/multimedia/icons/search_icon.svg" alt="icono de busqueda" height="40em">
+        <input class="busqueda__input" type="text" placeholder=" Código, nombre o categoría">
+      </div>
+
+      <div class="flex-row align-center justify-between">  
+        <h1 class="uppercase flex-row">Listado de Productos</h1>
+        <a href="/admin/productos/create" class="flex-row align-center uppercase"><span class="agregar__text">Agregar</span> <button class="agregar__btn">+</button></a>
+      </div>
+      
+      <table class="width100">
+        <thead>
+          <tr class="text-left">
+            <th>#ID</th>
+            <th>Codigo SKU</th>
+            <th>Nombre</th>
+            <th>Colección</th>
+            <th class="s-table-hidden">Precio</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% productos.forEach(producto => { %>
+          <tr class="text-left">
+            <td><%= producto.id %></td>
+            <td><%= producto.sku %></td>
+            <td><%= producto.nombre %></td>
+            <td><%= producto.Collection.nombre %></td>
+            <td class="s-table-hidden">$ <%= producto.precio %></td>
+            <td class="text-end">
+              <a href="/admin/productos/<%= producto.id %>/edit"><img src="/multimedia/icons/edit_pencil.svg" alt="icono de editar"></a> 
+              <form style="display: inline-block" action="/admin/productos/<%= producto.id %>?_method=DELETE" method="post" >
+                <button type="submit"><img src="/multimedia/icons/delete_trash.svg" alt="icono de borrar"></button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </main>
+
+    <%- include('../../partials/footerAdmin') %>
+
+    <script>
+      document.addEventListener("submit", (event) => {
+        if (event.target.classList.contains("form-delete")) {
+          event.preventDefault();
+
+          if (confirm("¿Está seguro que desea eliminar el producto?")) {
+            event.target.submit();
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

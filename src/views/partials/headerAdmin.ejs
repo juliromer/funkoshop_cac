@@ -1,0 +1,22 @@
+<header>
+  <div class="header__container">
+    <a href="/"><img class="header__logo" src="/multimedia/branding/logo_light_horizontal.svg" alt="Logo Funkoshop"></a>
+
+    <div class="hamMenu">
+      <button onclick="hamburguerMenu()" class="menu-btn"><img src="/multimedia/icons/menu.svg" alt=""></button>
+      <nav class="navbar menu-content" id="myMenu">
+        <a class="navbar__link" href="/tienda/shop">Ver Tienda</a>
+        <a class="navbar__link" href="/admin/productos">Productos</a>
+        <a class="navbar__link" href="/admin/colecciones">Colecciones</a>
+        <a class="navbar__link" href="/logout">Salir</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+
+<script>
+  function hamburguerMenu() {
+    document.getElementById("myMenu").classList.toggle("showMenu");
+  }
+</script>

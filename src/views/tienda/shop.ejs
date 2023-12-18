@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop</title>
+  <link rel="icon" href="/multimedia/branding/logoipsum-282.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/css/style.css?num=<%= Date.now() %>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@400;500;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <%- include('../partials/header') %>
+    <div class="shop-grid container__shop">
+
+      <div class="dropdown">
+        <button onclick="dropdownFilters()" class="dropbtn">Filtrar</button>
+        <div id="myDropdown" class="dropdown-content">
+
+          <form class="shopForm" action="">
+            <div>
+              <label class="shopForm__label" for="">Buscar </label><br>
+              <input class="shopForm__input" type="" placeholder=" Item o colección">
+            </div>
+
+            <div>
+              <label class="shopForm__label" for="">Ordenar por </label><br>
+              <select class="shopForm__select" name="" id="" placeholder="Más relevantes">
+                <option value=""></option>
+                <option value="Más relevantes">Más relevantes</option>
+                <option value="Precio - mayor a menor">Mayor a menor</option>
+                <option value="Precio - menor a mayor">Menor a mayor</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="shopForm__label" for="">Precio</label>
+              <div class="flex-row align-center">
+                <div>
+                  <label for="">Min </label>
+                  <input type="number" placeholder="0">
+                </div>
+                -
+                <div>
+                  <label for="">Max </label>
+                  <input type="number" placeholder="0">
+                </div>
+              </div>
+            </div>
+
+            <div class="flex-column">
+              <label class="shopForm__label" for="">Filtrar</label>
+              <label><input type="checkbox" id="" value="" /> Nuevos</label>
+              <label><input type="checkbox" id="" value="" /> Ofertas</label>
+              <label><input type="checkbox" id="" value="" /> Edición especial</label>
+              <label><input type="checkbox" id="" value="" /> Favoritos</label>
+            </div>
+          </form>
+        </div>
+      </div>
+
+
+      <main>
+        <section class="shop-grid__products-wrapper">
+          <% productos.forEach(producto=> { %>
+            <article class="card-item">
+              <a class="card-item__link" href="/tienda/item/<%= producto.id %>">
+                <div class="card-item__cover">
+                  <% if (producto.id> productos.length - 6) { %>
+                    <span class="card-item__tag">Nuevo</span>
+                    <% } else { %>
+                      <span></span>
+                      <% } %>
+                        <img class="card-item__img--front" width="280"
+                          src="/uploads/productos/producto_<%= producto.id %>.webp" alt="<%= producto.nombre %>" />
+                        <img class="card-item__img--box" width="280"
+                          src="/uploads/productos/producto_caja_<%= producto.id %>.webp" alt="<%= producto.nombre %>" />
+                </div>
+                <div class="card-item__content">
+                  <p class="card-item__collection">
+                    <%= producto.Collection.nombre %>
+                  </p>
+                  <h3 class="card-item__name">
+                    <%= producto.nombre %>
+                  </h3>
+                  <p class="card-item__price">$<%= producto.precio %>
+                  </p>
+                  <p class="card-item__promo">
+                    <%= producto.cuotas %>
+                  </p>
+                </div>
+              </a>
+            </article>
+            <% }) %>
+        </section>
+      </main>
+    </div>
+
+
+    <%- include('../partials/footer') %>
+
+      <script>
+        function dropdownFilters() {
+          document.getElementById("myDropdown").classList.toggle("show");
+        }
+      </script>
+</body>
+
+</html>
