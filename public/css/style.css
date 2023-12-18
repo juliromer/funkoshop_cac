@@ -1300,6 +1300,10 @@ iconify-icon {
   .carrito-tabla-encabezado {
     display: none;
   }
+
+  .carrito-titulo, .carrito-resumen-titulo {
+    font-size: 36px;
+  }
 }
 
 
@@ -1325,6 +1329,10 @@ iconify-icon {
 
   .carrito-tabla tr {
     padding: 16px 8px;
+  }
+
+  .carrito-titulo, .carrito-resumen-titulo {
+    font-size: 26px;
   }
 }
 
