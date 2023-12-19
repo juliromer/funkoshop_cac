@@ -3,14 +3,16 @@ const modelCollection = require("../models/Collection");
 
 
 /* INICIO */
-
+/* Traemos todas las colecciones, y ademas los productos que son novedad */
 const index = async (req, res) => {
   try {
-    const productos = await modelProduct.findAll({
-      include: "Collection",
-    });
+    const ultimosProductos = await modelProduct.findAll(
+      { include: "Collection", 
+      where: {
+        novedad: 'Si'
+      } });
     const colecciones = await modelCollection.findAll();
-    res.render("inicio", { productos, colecciones });
+    res.render("inicio", { ultimosProductos, colecciones });
   } catch (error) {
     res.status(500).send(error);
   }

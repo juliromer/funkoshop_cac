@@ -1,16 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Colecciones</title>
-    <link rel="icon" href="/multimedia/branding/logoipsum-282.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/css/style.css?num=<%= Date.now() %>" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
-  </head>
+  <%- include('../../partials/meta') %>
 
   <body>
     <%- include('../../partials/headerAdmin') %>
@@ -32,8 +23,9 @@
         </div>
 
         <div>
-          <label for="nombre">Descripción: </label>
-          <input class="admin__forms__input" type="text" id="descripcion" name="descripcion" value="<%= typeof values != 'undefined' ? values.descripcion : '' %>" />
+          <label for="descripcion">Descripción: </label>
+          <br>
+          <textarea class="admin__forms__textarea" type="text" id="descripcion" name="descripcion" cols="30" rows="10"><%= typeof values != 'undefined' ? values.descripcion : '' %></textarea>
         </div>
 
         <div>

@@ -3,7 +3,7 @@ const modelCollection = require("../models/Collection");
 
 
 /* SHOP */
-
+/* Traer todos los productos */
 const shop = async (req, res) => {
   try {
     const productos = await modelProduct.findAll({
@@ -17,13 +17,15 @@ const shop = async (req, res) => {
 
 
 /* ITEM */
-
+/* Traer el item seleccionado, y tambien los productos de la misma coleccion */
 const showItem = async (req,res)=>{
   try {
     const productoMain = await modelProduct.findByPk(req.params.id, {
       include: "Collection" }); 
     const productos = await modelProduct.findAll({
-        include: "Collection",
+      include: "Collection", where: {
+        CollectionId: productoMain.Collection.id
+      }
       });
 
     if (productoMain) {
@@ -39,12 +41,14 @@ const showItem = async (req,res)=>{
 
 
 /* COLECCIÓN */
-
+/* Traer la coleccion seleccionada, y tambien todos los productos de esa coleccion */
 const showCollection = async (req,res)=>{
   try {
     const coleccion = await modelCollection.findByPk(req.params.id);
     const productos = await modelProduct.findAll({
-      include: "Collection",
+      include: "Collection", where: {
+        CollectionId: coleccion.id
+      }
       });
     res.render("tienda/coleccion", { coleccion, productos });
   } catch (error) {

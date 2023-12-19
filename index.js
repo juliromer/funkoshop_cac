@@ -30,6 +30,8 @@ app.set("views", path.join(__dirname, "/src/views"));
 app.use(methodOverride("_method"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "/public")));
+//Probando para imagenes de header. Asi si funciona.
+app.use(express.static(__dirname + '/public'));
 
 app.use(require("./src/routes/authRoutes"));
 
@@ -45,8 +47,7 @@ app.use("/admin/colecciones", isLogin, admincoleccionesRoutes);
 const adminProductosRoutes = require("./src/routes/admin/productosRoutes");
 app.use("/admin/productos", isLogin, adminProductosRoutes);
 
-//Probando para imagenes de header
-app.use(express.static(__dirname + '/public'));
+
 
 app.use((req, res, next) => {
   res.status(404).send("La pagina no existe.");

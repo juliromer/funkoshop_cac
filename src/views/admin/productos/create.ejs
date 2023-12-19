@@ -1,16 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Productos</title>
-    <link rel="icon" href="/multimedia/branding/logoipsum-282.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="/css/style.css?num=<%= Date.now() %>" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Raleway:wght@400;500;700&display=swap" rel="stylesheet">
-  </head>
+  <%- include('../../partials/meta') %>
 
   <body>
     <%- include('../../partials/headerAdmin') %>
@@ -38,29 +29,29 @@
 
         <div>
           <label for="nombre">Nombre: </label>
-          <input class="admin__forms__input" type="text" id="nombre" name="nombre" value="<%= typeof values != 'undefined' ? values.nombre : '' %>" />
+          <input class="admin__forms__input" type="text" id="nombre" name="nombre"/>
         </div>
 
         <div>
           <label for="descripcion">Descripción: </label>
           <br>
-          <textarea class="admin__forms__textarea" type="text" id="descripcion" name="descripcion" value="<%= typeof values != 'undefined' ? values.descripcion : '' %>" cols="30" rows="10"></textarea>
+          <textarea class="admin__forms__textarea" type="text" id="descripcion" name="descripcion" cols="30" rows="10"></textarea>
         </div>
 
         <div class="flex-row align-center justify-between">
           <div>
             <label for="sku">SKU: </label>
-            <input class="admin__forms__input" type="text" id="sku" name="sku" value="<%= typeof values != 'undefined' ? values.sku : '' %>" />
+            <input class="admin__forms__input" type="text" id="sku" name="sku"/>
           </div>
   
           <div>
             <label for="precio">Precio: </label>
-            <input class="admin__forms__input" type="number" step="0.01" id="precio" name="precio" value="<%= typeof values != 'undefined' ? values.precio : '' %>" />
+            <input class="admin__forms__input" type="number" step="0.01" id="precio" name="precio"/>
           </div>
   
           <div>
             <label for="stock">Stock: </label>
-            <input class="admin__forms__input" type="number" id="stock" name="stock" value="<%= typeof values != 'undefined' ? values.stock : '' %>" />
+            <input class="admin__forms__input" type="number" id="stock" name="stock"/>
           </div>
         </div>
 
@@ -68,7 +59,7 @@
         <div class="flex-row align-center justify-between">
           <div>
             <label for="descuento">Descuento: </label>
-            <input class="admin__forms__input" type="number" id="descuento" name="descuento" value="<%= typeof values != 'undefined' ? values.descuento : '' %>" />
+            <input class="admin__forms__input" type="number" id="descuento" name="descuento"/>
           </div>
   
           <div>
@@ -78,6 +69,14 @@
               <option value="3 cuotas sin interés">3 cuotas sin interés</option>
               <option value="6 cuotas sin interés">6 cuotas sin interés</option>
               <option value="12 cuotas sin interés">12 cuotas sin interés</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="novedad">Novedad: </label>
+            <select class="admin__forms__select" name="novedad" id="novedad">
+              <option value="No">No</option>
+              <option value="Si">Si</option>
             </select>
           </div>
         </div>
