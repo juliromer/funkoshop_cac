@@ -1,112 +1,112 @@
 <!DOCTYPE html>
 <html lang="es">
 
-  <%- include('../../partials/meta') %>
+<%- include('../../partials/meta') %>
 
-  <body>
-    <%- include('../../partials/headerAdmin') %>
+<body>
+  <%- include('../../partials/headerAdmin') %>
+  
+  <main class="container__forms">
+    <h1 class="uppercase">Agregar nuevo producto</h1>
+    
+    <% if (typeof errors != 'undefined') { %>
+    <ul>
+      <% errors.forEach(error => { %>
+      <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+    <% } %>
+    
+    <form class="admin__form flex-column" action="/admin/productos" method="post" enctype="multipart/form-data" >
+      <div>
+        <label for="CollectionId">Colección: </label>
+        <select class="admin__forms__select" name="CollectionId" id="CollectionId">
+          <option value=""></option>
+          <% colecciones.forEach(coleccion => { %>
+          <option value="<%= coleccion.id %>"><%= coleccion.nombre %></option>
+          <% }) %>
+        </select>
+      </div>
+      
+      <div>
+        <label for="nombre">Nombre: </label>
+        <input class="admin__forms__input" type="text" id="nombre" name="nombre"/>
+      </div>
 
-    <main class="container__forms">
-      <h1 class="uppercase">Agregar nuevo producto</h1>
-      <% if (typeof errors != 'undefined') { %>
-      <ul>
-        <% errors.forEach(error => { %>
-        <li><%= error.msg %></li>
-        <% }) %>
-      </ul>
-      <% } %>
-
-      <form class="admin__form flex-column" action="/admin/productos" method="post" enctype="multipart/form-data" >
+      <div>
+        <label for="descripcion">Descripción: </label>
+        <br>
+        <textarea class="admin__forms__textarea" type="text" id="descripcion" name="descripcion" cols="30" rows="10"></textarea>
+      </div>
+      
+      <div class="flex-row align-center justify-between">
         <div>
-          <label for="CollectionId">Colección: </label>
-          <select class="admin__forms__select" name="CollectionId" id="CollectionId">
-            <option value=""></option>
-            <% colecciones.forEach(coleccion => { %>
-            <option value="<%= coleccion.id %>"><%= coleccion.nombre %></option>
-            <% }) %>
+          <label for="sku">SKU: </label>
+          <input class="admin__forms__input" type="text" id="sku" name="sku"/>
+        </div>
+        
+        <div>
+          <label for="precio">Precio: </label>
+          <input class="admin__forms__input" type="number" step="0.01" id="precio" name="precio"/>
+        </div>
+
+        <div>
+          <label for="stock">Stock: </label>
+          <input class="admin__forms__input" type="number" id="stock" name="stock"/>
+        </div>
+      </div>
+      
+      <div class="flex-row align-center justify-between">
+        <div>
+          <label for="descuento">Descuento: </label>
+          <input class="admin__forms__input" type="number" id="descuento" name="descuento"/>
+        </div>
+  
+        <div>
+          <label for="cuotas">Cuotas: </label>
+          <select class="admin__forms__select" name="cuotas" id="cuotas">
+            <option value="1 cuota sin interés">1 cuota sin interés</option>
+            <option value="3 cuotas sin interés">3 cuotas sin interés</option>
+            <option value="6 cuotas sin interés">6 cuotas sin interés</option>
+            <option value="12 cuotas sin interés">12 cuotas sin interés</option>
           </select>
         </div>
 
         <div>
-          <label for="nombre">Nombre: </label>
-          <input class="admin__forms__input" type="text" id="nombre" name="nombre"/>
+          <label for="novedad">Novedad: </label>
+          <select class="admin__forms__select" name="novedad" id="novedad">
+            <option value="No">No</option>
+            <option value="Si">Si</option>
+          </select>
         </div>
-
+      </div>
+      
+      <div class="flex-row align-center justify-between">
         <div>
-          <label for="descripcion">Descripción: </label>
-          <br>
-          <textarea class="admin__forms__textarea" type="text" id="descripcion" name="descripcion" cols="30" rows="10"></textarea>
+          <label for="imagen">Imagen: </label>
+          <input class="admin__forms__files" type="file" id="imagen" name="imagen" accept="image/*" />
         </div>
-
-        <div class="flex-row align-center justify-between">
-          <div>
-            <label for="sku">SKU: </label>
-            <input class="admin__forms__input" type="text" id="sku" name="sku"/>
-          </div>
   
-          <div>
-            <label for="precio">Precio: </label>
-            <input class="admin__forms__input" type="number" step="0.01" id="precio" name="precio"/>
-          </div>
-  
-          <div>
-            <label for="stock">Stock: </label>
-            <input class="admin__forms__input" type="number" id="stock" name="stock"/>
-          </div>
+        <div>
+          <label for="imagen_caja">Imagen Caja: </label>
+          <input class="admin__forms__files" type="file" id="imagen_caja" name="imagen_caja" accept="image/*" />
         </div>
-
-
-        <div class="flex-row align-center justify-between">
-          <div>
-            <label for="descuento">Descuento: </label>
-            <input class="admin__forms__input" type="number" id="descuento" name="descuento"/>
-          </div>
+      </div>
+      
+      <button class="primary__btn" type="submit">Guardar</button>
+    </form>
+  </main>
   
-          <div>
-            <label for="cuotas">Cuotas: </label>
-            <select class="admin__forms__select" name="cuotas" id="cuotas">
-              <option value="1 cuota sin interés">1 cuota sin interés</option>
-              <option value="3 cuotas sin interés">3 cuotas sin interés</option>
-              <option value="6 cuotas sin interés">6 cuotas sin interés</option>
-              <option value="12 cuotas sin interés">12 cuotas sin interés</option>
-            </select>
-          </div>
-
-          <div>
-            <label for="novedad">Novedad: </label>
-            <select class="admin__forms__select" name="novedad" id="novedad">
-              <option value="No">No</option>
-              <option value="Si">Si</option>
-            </select>
-          </div>
-        </div>
-        
-
-        <div class="flex-row align-center justify-between">
-          <div>
-            <label for="imagen">Imagen: </label>
-            <input class="admin__forms__files" type="file" id="imagen" name="imagen" accept="image/*" />
-          </div>
+  <%- include('../../partials/footerAdmin') %>
   
-          <div>
-            <label for="imagen_caja">Imagen Caja: </label>
-            <input class="admin__forms__files" type="file" id="imagen_caja" name="imagen_caja" accept="image/*" />
-          </div>
-        </div>
-        
-        <button class="primary__btn" type="submit">Guardar</button>
-      </form>
-    </main>
+  <script>
+    const form = document.querySelector("form");
     
-    <%- include('../../partials/footerAdmin') %>
+    form.addEventListener("submit", (event) => {
+      const btn = document.querySelector('button[type="submit"]');
+      btn.setAttribute("disabled", true);
+    });
+  </script>
+</body>
 
-    <script>
-      const form = document.querySelector("form");
-
-      form.addEventListener("submit", (event) => {
-        const btn = document.querySelector('button[type="submit"]');
-        btn.setAttribute("disabled", true);
-      });
-    </script>
-  </body>
 </html>

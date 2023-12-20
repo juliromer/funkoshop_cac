@@ -33,7 +33,7 @@ button {
   border: none;
 }
 
-/* GENERAL (Inicio, coleccion, item)*/
+/* GENERAL (Inicio, coleccion, item, carrito)*/
 .container {
   display: flex;
   flex-direction: column;
@@ -966,8 +966,6 @@ iconify-icon {
   border: 0;
   margin-bottom: 128px;
 }
-
-/* Hasta aca style de carrito.html */
 
 
 /* BOTON PRIMARIO */

@@ -5,36 +5,33 @@
 
 <body>
   <%- include('partials/header') %>
+  
+  <main class="container__listas">
+    <h1 class="primary__title">Contáctanos</h1>
 
-    <main class="container__listas">
-      <h1 class="primary__title">Contáctanos</h1>
-
-      <form action="">
-        <div class="flex-row">
-          <div>
-            <label for="">Nombre: </label>
-            <input class="contacto__input" type="text" name="" id="">
-          </div>
-
-          <div>
-            <label for="">Correo: </label>
-            <input class="contacto__input" type="email" name="" id="">
-          </div>
+    <form action="">
+      <div class="flex-row">
+        <div>
+          <label for="">Nombre: </label>
+          <input class="contacto__input" type="text" name="" id="">
         </div>
 
         <div>
-          <label for="">Mensaje: </label>
-          <textarea class="contacto__textarea" name="" id="" cols="30" rows="10"></textarea>
+          <label for="">Correo: </label>
+          <input class="contacto__input" type="email" name="" id="">
         </div>
+      </div>
 
-        <button type="submit" class="primary__btn">Enviar</button>
-      </form>
+      <div>
+        <label for="">Mensaje: </label>
+        <textarea class="contacto__textarea" name="" id="" cols="30" rows="10"></textarea>
+      </div>
 
-
-
-    </main>
-
-    <%- include('partials/footer') %>
+      <button type="submit" class="primary__btn">Enviar</button>
+    </form>
+  </main>
+  
+  <%- include('partials/footer') %>
 </body>
 
 </html>

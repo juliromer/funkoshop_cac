@@ -1,13 +1,17 @@
 <header>
   <div class="header__container">
-    <a href="/"><img class="header__logo" src="/multimedia/branding/logo_light_horizontal.svg" alt="Logo Funkoshop"></a>
+    <a href="/">
+      <img class="header__logo" src="/multimedia/branding/logo_light_horizontal.svg" alt="Logo Funkoshop">
+    </a>
 
     <div class="hamMenu" style="width: 30%;">
-      <button onclick="hamburguerMenu()" class="menu-btn"><img src="/multimedia/icons/menu.svg" alt=""></button>
+      <button onclick="hamburguerMenu()" class="menu-btn">
+        <img src="/multimedia/icons/menu.svg" alt="">
+      </button>
+
       <nav class="navbar menu-content" id="myMenu">
         <div class="navbar__shop with-submenu">
-          <a class="navbar__link with-icon" href="/tienda/shop">Shop <span class="shop__span">(Ver todo)</span><img src="/multimedia/icons/chevron_down.svg"
-              alt="icono flecha"></a>
+          <a class="navbar__link with-icon" href="/tienda/shop">Shop <span class="shop__span">(Ver todo)</span><img src="/multimedia/icons/chevron_down.svg" alt="icono flecha"></a>
           <div class="navbar__submenu">
             <a class="navbar__link" href="/tienda/coleccion/3">Harry Potter</a>
             <a class="navbar__link" href="/tienda/coleccion/2">Pokémon</a>
@@ -16,9 +20,11 @@
         </div>
 
         <a class="navbar__link" href="/contacto">Contacto</a>
-        <a href="/tienda/carrito"><span class="carrito navbar__link">Carrito</span><img class="carrito__img" src="/multimedia/icons/cart-icon.svg" alt="icono de carrito"></a>
+        <a href="/tienda/carrito">
+          <span class="carrito navbar__link">Carrito</span>
+          <img class="carrito__img" src="/multimedia/icons/cart-icon.svg" alt="icono de carrito">
+        </a>
       </nav>
-
     </div>
   </div>
 </header>

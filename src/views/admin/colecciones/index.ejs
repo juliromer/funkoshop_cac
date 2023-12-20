@@ -1,61 +1,69 @@
 <!DOCTYPE html>
 <html lang="es">
 
-  <%- include('../../partials/meta') %>
+<%- include('../../partials/meta') %>
 
-  <body>
-    <%- include('../../partials/headerAdmin') %>
-
-    <main class="container__listas"> 
-      <div class="flex-row align-center">
-        <img src="/multimedia/icons/search_icon.svg" alt="icono de busqueda" height="40em">
-        <input class="busqueda__input" type="text" placeholder=" Código, nombre o categoría">
-      </div>
-
-      <div class="flex-row align-center justify-between">  
-        <h1 class="uppercase">Listado de Colecciones</h1> 
-        <a href="/admin/colecciones/create" class="flex-row align-center uppercase"><span class="agregar__text">Agregar</span> <button class="agregar__btn">+</button></a>
-      </div>
-
-      <table class="width100">
-        <thead>
-          <tr class="text-left">
-            <th>#</th>
-            <th>Nombre</th>
-            <th>Descripción</th>
-            <th></th>
-          </tr>
-        </thead>
-        
-        <tbody>
-          <% colecciones.forEach(coleccion => { %>
-          <tr class="text-left">
-            <td><%= coleccion.id %></td>
-            <td><%= coleccion.nombre %></td>
-            <td><%= coleccion.descripcion %></td>
-            <td class="text-end">
-                <a href="/admin/colecciones/<%= coleccion.id %>/edit"><img src="/multimedia/icons/edit_pencil.svg" alt="icono de editar"></a> 
-                <form style="display: inline-block" action="/admin/colecciones/<%= coleccion.id %>?_method=DELETE" method="post" >
-                  <button type="submit"><img src="/multimedia/icons/delete_trash.svg" alt="icono de borrar"></button>
-                </form>
-            </td>
-          </tr>
-          <% }) %>
-        </tbody>
-      </table>
-    </main>
-
-    <%- include('../../partials/footerAdmin') %>
-
-    <script>
-      document.addEventListener("submit", (event) => {
-        if (event.target.classList.contains("form-delete")) {
-          event.preventDefault();
-          if (confirm("¿Está seguro que desea eliminar la colección?")) {
-            event.target.submit();
-          }
+<body>
+  <%- include('../../partials/headerAdmin') %>
+  
+  <main class="container__listas">
+    <div class="flex-row align-center">
+      <img src="/multimedia/icons/search_icon.svg" alt="icono de busqueda" height="40em">
+      <input class="busqueda__input" type="text" placeholder=" Código, nombre o categoría">
+    </div>
+    
+    <div class="flex-row align-center justify-between">
+      <h1 class="uppercase">Listado de Colecciones</h1>
+      <a href="/admin/colecciones/create" class="flex-row align-center uppercase">
+        <span class="agregar__text">Agregar</span>
+        <button class="agregar__btn">+</button>
+      </a>
+    </div>
+    
+    <table class="width100">
+      <thead>
+        <tr class="text-left">
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th></th>
+        </tr>
+      </thead>
+      
+      <tbody>
+      <% colecciones.forEach(coleccion => { %>
+        <tr class="text-left">
+          <td><%= coleccion.id %></td>
+          <td><%= coleccion.nombre %></td>
+          <td><%= coleccion.descripcion %></td>
+          <td class="text-end">
+            <a href="/admin/colecciones/<%= coleccion.id %>/edit">
+              <img src="/multimedia/icons/edit_pencil.svg" alt="icono de editar">
+            </a>
+            <form style="display: inline-block" action="/admin/colecciones/<%= coleccion.id %>?_method=DELETE" method="post" >
+              <button type="submit">
+                <img src="/multimedia/icons/delete_trash.svg" alt="icono de borrar">
+              </button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+      </tbody>
+    </table>
+  </main>
+  
+  <%- include('../../partials/footerAdmin') %>
+  
+  <script>
+    document.addEventListener("submit", (event) => {
+      if (event.target.classList.contains("form-delete")) {
+        event.preventDefault();
+        if (confirm("¿Está seguro que desea eliminar la colección?")) {
+          event.target.submit();
         }
-      });
-    </script>
-  </body>
+      }
+    });
+  </script>
+</body>
+
 </html>

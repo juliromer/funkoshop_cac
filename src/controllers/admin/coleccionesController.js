@@ -28,7 +28,6 @@ const create = (req, res) => {
 };
 
 const store = async (req, res) => {
-  //console.log(req.body, req.file);
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -68,7 +67,6 @@ const store = async (req, res) => {
 const edit = async (req, res) => {
   try {
     const coleccion = await model.findByPk(req.params.id);
-    //console.log(coleccion);
 
     if (coleccion) {
       res.render("admin/colecciones/edit", { values: coleccion });
@@ -85,8 +83,6 @@ const edit = async (req, res) => {
 /* UPDATE */
 
 const update = async (req, res) => {
-  //console.log(req.params, req.body);
-
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {

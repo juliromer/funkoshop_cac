@@ -3,118 +3,84 @@
 
 <%- include('../partials/meta') %>
 
-  <body>
-    <%- include('../partials/header') %>
+<body>
+  <%- include('../partials/header') %>
+  
+  <section class="container">
+    <h1 class="carrito-titulo">CARRITO DE COMPRAS</h1>
+    <table class="carrito-tabla">
+      <tr class="carrito-tabla-encabezado">
+        <th>Detalle del producto</th>
+        <th>Cantidad</th>
+        <th>Total</th>
+      </tr>
 
-      <section class="container">
-        <h1 class="carrito-titulo">CARRITO DE COMPRAS</h1>
+      <% carritoItems.forEach(item=> { %>
+      <tr class="carrito-tabla-item">
+        <td>
+          <div class="carrito-item">
+            <img src="/uploads/productos/producto_<%= item.id %>.webp" alt="">
+            <div>
+              <h4 class="carrito-item-titulo"><%= item.nombre %></h4>
+              <h5 class="carrito-item-coleccion"><%= item.coleccion %></h5>
+              <br>
+              <p class="carrito-item-precio">Precio: $<%= item.precio %></p>
+            </div>
+          </div>
+        </td>
 
-        <table class="carrito-tabla">
-          <tr class="carrito-tabla-encabezado">
-            <th>Detalle del producto</th>
-            <th>Cantidad</th>
-            <th>Total</th>
-          </tr>
+        <td class="carrito-tabla-cantidad">
+          <input class="carrito-cantidad-input" type="text" value="<%= item.cantidad %>">
+          <div class="carrito-cantidad-botones">
+            <button>+</button>
+            <button>-</button>
+          </div>
+        </td>
 
-          <% carritoItems.forEach(item=> { %>
-            <tr class="carrito-tabla-item">
-              <td>
-                <div class="carrito-item">
-                  <img src="/uploads/productos/producto_<%= item.productoCarrito.id %>.webp" alt="">
-                  <div>
-                    <h4 class="carrito-item-titulo">
-                      <%= item.productoCarrito.nombre %>
-                        </h4>
-                        <h5 class="carrito-item-coleccion">
-                          <%= item.productoCarrito.Collection.nombre %>
-                            </h5>
-                            <br>
-                            <p class="carrito-item-precio">Precio: $<%= item.productoCarrito.precio %>
-                            </p>
-                  </div>
-                </div>
-              </td>
+        <td>
+          <p class="carrito-tabla-precio">$<span><%= item.precio * item.cantidad %></span></p>
+        </td>
 
-              <td class="carrito-tabla-cantidad">
-                <input class="carrito-cantidad-input" type="text" value="<%= item.cantidad %>">
-                <div class="carrito-cantidad-botones">
-                  <button>+</button>
-                  <button>-</button>
-                </div>
-              </td>
-
-              <td>
-                <p class="carrito-tabla-precio">$<span>
-                    <%= item.productoCarrito.precio * item.cantidad %>
-                  </span></p>
-              </td>
-
-              <td>
-                <form style="display: inline-block">
-                  <button type="submit"><img src="/multimedia/icons/delete.svg" alt="icono de borrar"></button>
-                </form>
-              </td>
-            </tr>
-            <% }) %>
-          </table>
-          </section>
-
-
-
-          <section class="container">
-              <div class="carrito-resumen">
-                <h2 class="carrito-resumen-titulo">RESUMEN</h2>
-              </div>
-
-              <div class="carrito-resumen">
-                <table class="carrito-resumen-lista">
-                  <tr>
-                    <th>
-                      <p>CANTIDAD DE ELEMENTOS</p>
-                    </th>
-                    <td>
-                      <p id="carrito-elementos">3</p>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <th>
-                      <p>SUBTOTAL</p>
-                    </th>
-                    <td>
-                      <p>$<span id="carrito-subtotal">5399.97</span></p>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <th>
-                      <p id="carrito-envioGratis">ENVIO</p>
-                    </th>
-                    <td>
-                      <p>$<span id="carrito-envio">2500</span></p>
-                    </td>
-                  </tr>
-
-                  <tr class="carrito-resumen-lista-total">
-                    <th>
-                      <p>TOTAL</p>
-                    </th>
-                    <td>
-                      <p>$<span id="carrito-total">5399.97</span></p>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-
-              <div class="carrito-resumen">
-                <button class="carrito-resumen-pagar">IR A PAGAR</button>
-              </div>
-            </section>
+        <td>
+          <button type="submit"><img src="/multimedia/icons/delete.svg" alt="icono de borrar"></button>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+  </section>
       
-
-      <%- include('../partials/footer') %>
-
-
-  </body>
+  <section class="container">
+    <div class="carrito-resumen">
+      <h2 class="carrito-resumen-titulo">RESUMEN</h2>
+    </div>
+        
+    <div class="carrito-resumen">
+      <table class="carrito-resumen-lista">
+        <tr>
+          <th><p>CANTIDAD DE ELEMENTOS</p></th>
+          <td><p>3</p></td>
+        </tr>
+        <tr>
+          <th><p>SUBTOTAL</p></th>
+          <td><p>$<span>5399.97</span></p></td>
+        </tr>
+        <tr>
+          <th><p>ENVIO</p></th>
+          <td><p>$<span>2500</span></p></td>
+        </tr>
+        <tr class="carrito-resumen-lista-total">
+          <th><p>TOTAL</p></th>
+          <td><p>$<span>5399.97</span></p></td>
+        </tr>
+      </table>
+    </div>
+    
+    <div class="carrito-resumen">
+      <button class="carrito-resumen-pagar">IR A PAGAR</button>
+    </div>
+  </section>
+      
+  <%- include('../partials/footer') %>
+</body>
 
 </html>

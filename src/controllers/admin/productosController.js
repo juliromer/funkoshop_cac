@@ -36,7 +36,6 @@ const create = async (req, res) => {
 };
 
 const store = async (req, res) => {
-  //console.log(req.body, req.files);
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -54,7 +53,6 @@ const store = async (req, res) => {
 
   try {
     const producto = await model.create(req.body);
-    //console.log(producto);
     if (req.files.imagen) {
       sharp(req.files.imagen[0].buffer)
         .resize(500)
@@ -109,8 +107,6 @@ const edit = async (req, res) => {
 /* UPDATE */
 
 const update = async (req, res) => {
-  //console.log(req.params, req.body);
-
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {

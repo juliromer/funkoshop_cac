@@ -1,42 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 
-  <%- include('../../partials/meta') %>
+<%- include('../../partials/meta') %>
 
-  <body>
-    <%- include('../../partials/headerAdmin') %>
+<body>
+  <%- include('../../partials/headerAdmin') %>
 
-    <main class="container__forms">
-      <h1 class="uppercase">Crear nueva colección</h1>
-      <% if (typeof errors != 'undefined') { %>
-      <ul>
-        <% errors.forEach(error => { %>
-        <li><%= error.msg %></li>
-        <% }) %>
-      </ul>
-      <% } %>
+  <main class="container__forms">
+    <h1 class="uppercase">Crear nueva colección</h1>
 
-      <form class="admin__form flex-column" action="/admin/colecciones" method="post" enctype="multipart/form-data"> 
-        <div>
-          <label for="nombre">Nombre: </label>
-          <input class="admin__forms__input" type="text" id="nombre" name="nombre"/>
-        </div>
+    <% if (typeof errors != 'undefined') { %>
+    <ul>
+      <% errors.forEach(error => { %>
+      <li><%= error.msg %></li>
+      <% }) %>
+    </ul>
+    <% } %>
 
-        <div>
-          <label for="descripcion">Descripción: </label>
-          <br>
-          <textarea class="admin__forms__textarea" type="text" id="descripcion" name="descripcion" cols="30" rows="10"></textarea>
-        </div>
+    <form class="admin__form flex-column" action="/admin/colecciones" method="post" enctype="multipart/form-data"> 
+      <div>
+        <label for="nombre">Nombre: </label>
+        <input class="admin__forms__input" type="text" id="nombre" name="nombre"/>
+      </div>
 
-        <div>
-          <label for="imagen">Imagen: </label>
-          <input class="admin__forms__files" type="file" id="imagen" name="imagen" accept="image/*" />
-        </div>
+      <div>
+        <label for="descripcion">Descripción: </label>
+        <br>
+        <textarea class="admin__forms__textarea" type="text" id="descripcion" name="descripcion" cols="30" rows="10"></textarea>
+      </div>
 
-        <button type="submit" class="primary__btn">Guardar</button>
-      </form>
-    </main>
+      <div>
+        <label for="imagen">Imagen: </label>
+        <input class="admin__forms__files" type="file" id="imagen" name="imagen" accept="image/*" />
+      </div>
+
+      <button type="submit" class="primary__btn">Guardar</button>
+    </form>
+  </main>
     
-    <%- include('../../partials/footerAdmin') %>
-  </body>
+  <%- include('../../partials/footerAdmin') %>
+</body>
+
 </html>
