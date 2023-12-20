@@ -56,14 +56,51 @@ const showCollection = async (req,res)=>{
   }
 };
 
-const carrito = (req, res) => {
-  res.render("tienda/carrito");
+
+
+const addCart = async (req, res) => {
+  if (!req.session.cart) {
+    const cart = {
+      items: [],
+    };
+    req.session.cart = cart;
+  }
+
+  const index = req.session.cart.items.findIndex(
+    (item) => item.id == req.params.id
+  );
+
+  const productoCarrito = await modelProduct.findByPk(req.params.id, {
+    include: "Collection" }); 
+
+  if (index != -1) {
+    req.session.cart.items[index].cantidad++;
+  } else {
+    req.session.cart.items.push({ productoCarrito, cantidad: 1 });
+  }
+
+  // delete req.session.cart
+  // req.session.cart = null;
+
+  res.redirect("/tienda/carrito");
 };
+
+
+const showCart = (req, res) => {
+  try {
+    const carritoItems = req.session.cart.items
+    res.render("tienda/carrito", { carritoItems });
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
 
     
 module.exports = {
   shop,
   showItem,
   showCollection,
-  carrito
+  addCart,
+  showCart
 };

@@ -16,178 +16,104 @@
             <th>Total</th>
           </tr>
 
-          <tr class="carrito-tabla-item">
-            <td>
-              <div class="carrito-item">
-                <img src="/uploads/productos/producto_1.webp" alt="">
-                <div>
-                  <h4 class="carrito-item-titulo">Baby Yoda Blueball</h5>
-                    <h5 class="carrito-item-coleccion">Star Wars</h6>
-                      <br>
-                      <p class="carrito-item-precio">Precio: $1799,99</p>
+          <% carritoItems.forEach(item=> { %>
+            <tr class="carrito-tabla-item">
+              <td>
+                <div class="carrito-item">
+                  <img src="/uploads/productos/producto_<%= item.productoCarrito.id %>.webp" alt="">
+                  <div>
+                    <h4 class="carrito-item-titulo">
+                      <%= item.productoCarrito.nombre %>
+                        </h4>
+                        <h5 class="carrito-item-coleccion">
+                          <%= item.productoCarrito.Collection.nombre %>
+                            </h5>
+                            <br>
+                            <p class="carrito-item-precio">Precio: $<%= item.productoCarrito.precio %>
+                            </p>
+                  </div>
                 </div>
-              </div>
-            </td>
+              </td>
 
-            <td class="carrito-tabla-cantidad">
-              <input class="carrito-cantidad-input" type="text" value="2" id="carrito-input-starwars">
-              <div class="carrito-cantidad-botones">
-                <button id="carrito-botones-sumar-starwars">+</button>
-                <button id="carrito-botones-restar-starwars">-</button>
-              </div>
-            </td>
-
-            <td>
-              <p class="carrito-tabla-precio">$<span id="carrito-precio-starwars">3599.98</span></p>
-            </td>
-
-            <td>
-              <img src="/multimedia/icons/delete.svg" alt="">
-            </td>
-          </tr>
-
-          <tr class="carrito-tabla-item">
-            <td>
-              <div class="carrito-item">
-                <img src="/uploads/productos/producto_6.webp" alt="">
-                <div>
-                  <h4 class="carrito-item-titulo">Pidgeotto</h5>
-                    <h5 class="carrito-item-coleccion">Pokemon</h6>
-                      <br>
-                      <p class="carrito-item-precio">Precio: $1799,99</p>
+              <td class="carrito-tabla-cantidad">
+                <input class="carrito-cantidad-input" type="text" value="<%= item.cantidad %>">
+                <div class="carrito-cantidad-botones">
+                  <button>+</button>
+                  <button>-</button>
                 </div>
-              </div>
-            </td>
+              </td>
 
-            <td class="carrito-tabla-cantidad">
-              <input class="carrito-cantidad-input" type="text" value="1" id="carrito-input-pokemon">
-              <div class="carrito-cantidad-botones">
-                <button id="carrito-botones-sumar-pokemon">+</button>
-                <button id="carrito-botones-restar-pokemon">-</button>
-              </div>
-            </td>
-
-            <td>
-              <p class="carrito-tabla-precio">$<span id="carrito-precio-pokemon">1799.99</span></p>
-            </td>
-
-            <td>
-              <img src="/multimedia/icons/delete.svg" alt="">
-            </td>
-          </tr>
-        </table>
-
-        <div class="carrito-resumen">
-          <h2 class="carrito-resumen-titulo">RESUMEN</h2>
-        </div>
-
-        <div class="carrito-resumen">
-          <table class="carrito-resumen-lista">
-            <tr>
-              <th>
-                <p>CANTIDAD DE ELEMENTOS</p>
-              </th>
               <td>
-                <p id="carrito-elementos">3</p>
+                <p class="carrito-tabla-precio">$<span>
+                    <%= item.productoCarrito.precio * item.cantidad %>
+                  </span></p>
+              </td>
+
+              <td>
+                <form style="display: inline-block">
+                  <button type="submit"><img src="/multimedia/icons/delete.svg" alt="icono de borrar"></button>
+                </form>
               </td>
             </tr>
-
-            <tr>
-              <th>
-                <p>SUBTOTAL</p>
-              </th>
-              <td>
-                <p>$<span id="carrito-subtotal">5399.97</span></p>
-              </td>
-            </tr>
-
-            <tr>
-              <th>
-                <p id="carrito-envioGratis">ENVIO</p>
-              </th>
-              <td>
-                <p>$<span id="carrito-envio">2500</span></p>
-              </td>
-            </tr>
-
-            <tr class="carrito-resumen-lista-total">
-              <th>
-                <p>TOTAL</p>
-              </th>
-              <td>
-                <p>$<span id="carrito-total">5399.97</span></p>
-              </td>
-            </tr>
+            <% }) %>
           </table>
-        </div>
+          </section>
 
-        <div class="carrito-resumen">
-          <button class="carrito-resumen-pagar">IR A PAGAR</button>
-        </div>
-      </section>
+
+
+          <section class="container">
+              <div class="carrito-resumen">
+                <h2 class="carrito-resumen-titulo">RESUMEN</h2>
+              </div>
+
+              <div class="carrito-resumen">
+                <table class="carrito-resumen-lista">
+                  <tr>
+                    <th>
+                      <p>CANTIDAD DE ELEMENTOS</p>
+                    </th>
+                    <td>
+                      <p id="carrito-elementos">3</p>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <th>
+                      <p>SUBTOTAL</p>
+                    </th>
+                    <td>
+                      <p>$<span id="carrito-subtotal">5399.97</span></p>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <th>
+                      <p id="carrito-envioGratis">ENVIO</p>
+                    </th>
+                    <td>
+                      <p>$<span id="carrito-envio">2500</span></p>
+                    </td>
+                  </tr>
+
+                  <tr class="carrito-resumen-lista-total">
+                    <th>
+                      <p>TOTAL</p>
+                    </th>
+                    <td>
+                      <p>$<span id="carrito-total">5399.97</span></p>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+              <div class="carrito-resumen">
+                <button class="carrito-resumen-pagar">IR A PAGAR</button>
+              </div>
+            </section>
+      
 
       <%- include('../partials/footer') %>
 
-        <script>
-          const carritoElementos = document.getElementById('carrito-elementos')
-          const carritoSubtotal = document.getElementById('carrito-subtotal')
-          const carritoEnvio = document.getElementById('carrito-envio')
-          const carritoTotal = document.getElementById('carrito-total')
-
-          const carritoEnvioGratis = document.getElementById('carrito-envioGratis')
-
-          const sumarPokemon = document.getElementById('carrito-botones-sumar-pokemon');
-          const restarPokemon = document.getElementById('carrito-botones-restar-pokemon');
-          const inputPokemon = document.getElementById('carrito-input-pokemon');
-          const precioPokemon = document.getElementById('carrito-precio-pokemon');
-
-          const sumarStarWars = document.getElementById('carrito-botones-sumar-starwars');
-          const restarStarWars = document.getElementById('carrito-botones-restar-starwars');
-          const inputStarWars = document.getElementById('carrito-input-starwars');
-          const precioStarWars = document.getElementById('carrito-precio-starwars');
-
-          let precioItemPokemon = parseFloat(1799.99).toFixed(2);
-          let precioItemStarWars = parseFloat(1799.99).toFixed(2);
-
-
-          function sumarItem(input, precio, precioItem) {
-            input.value = Number(input.value) + 1
-            precio.innerHTML = (parseFloat(precio.innerHTML) + parseFloat(precioItem)).toFixed(2)
-            carritoElementos.innerHTML = Number(carritoElementos.innerHTML) + 1
-            carritoSubtotal.innerHTML = (parseFloat(carritoSubtotal.innerHTML) + parseFloat(precioItem)).toFixed(2)
-            carritoTotal.innerHTML = (parseFloat(carritoTotal.innerHTML) + parseFloat(precioItem)).toFixed(2)
-            if (Number(carritoSubtotal.innerHTML) < 8000) {
-              carritoEnvio.innerHTML = 2500;
-              carritoEnvioGratis.innerHTML = "ENVÍO"
-            } else {
-              carritoEnvio.innerHTML = 0;
-              carritoEnvioGratis.innerHTML = "¡ENVÍO GRATIS!"
-            }
-          }
-
-          function restarItem(input, precio, precioItem) {
-            if (Number(input.value) > 0) {
-              input.value = Number(input.value) - 1
-              precio.innerHTML = (parseFloat(precio.innerHTML) - parseFloat(precioItem)).toFixed(2)
-              carritoElementos.innerHTML = Number(carritoElementos.innerHTML) - 1
-              carritoSubtotal.innerHTML = (parseFloat(carritoSubtotal.innerHTML) - parseFloat(precioItem)).toFixed(2)
-              carritoTotal.innerHTML = (parseFloat(carritoTotal.innerHTML) - parseFloat(precioItem)).toFixed(2)
-              if (Number(carritoSubtotal.innerHTML) < 8000) {
-                carritoEnvio.innerHTML = 2500;
-                carritoEnvioGratis.innerHTML = "ENVÍO"
-              } else {
-                carritoEnvio.innerHTML = 0;
-                carritoEnvioGratis.innerHTML = "¡ENVÍO GRATIS!"
-              }
-            }
-          }
-
-          sumarPokemon.addEventListener('click', () => sumarItem(inputPokemon, precioPokemon, precioItemPokemon));
-          restarPokemon.addEventListener('click', () => restarItem(inputPokemon, precioPokemon, precioItemPokemon));
-
-          sumarStarWars.addEventListener('click', () => sumarItem(inputStarWars, precioStarWars, precioItemStarWars));
-          restarStarWars.addEventListener('click', () => restarItem(inputStarWars, precioStarWars, precioItemStarWars));
-        </script>
 
   </body>
 

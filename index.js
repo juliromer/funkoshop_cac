@@ -53,7 +53,6 @@ app.use((req, res, next) => {
   res.status(404).send("La pagina no existe.");
 });
 
-
 const PORT = 3000;
 app.listen(PORT, async () => {
   try {
